@@ -2,13 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"say_hello": "00_core.ipynb",
-         "get_schema": "01_schema.ipynb",
+index = {"get_schema": "01_schema.ipynb",
          "dtype_to_bqtype": "01_schema.ipynb",
          "df_to_bq_schema": "01_schema.ipynb"}
 
-modules = ["core.py",
-           "schema.py"]
+modules = ["schema.py"]
 
 doc_url = "https://andrewm4894.github.io/am4894bq/"
 

@@ -33,7 +33,11 @@ def dtype_to_bqtype(dtype, default_type: str = 'STRING') -> str:
     return bqtype
 
 
-def df_to_bq_schema(df):
+
+# Cell
+
+
+def df_to_bq_schema(df: pd.DataFrame) -> list:
     "Read a pandas DF and return a BigQuery schema for that DF."
     schema = []
     for col, dtype in df.dtypes.iteritems():
