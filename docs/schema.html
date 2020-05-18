@@ -45,7 +45,7 @@ description: "API details."
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_schema" class="doc_header"><code>get_schema</code><a href="https://github.com/andrewm4894/am4894bq/tree/master/am4894bq/schema.py#L11" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_schema</code>(<strong><code>table_id</code></strong>)</p>
+<h4 id="get_schema" class="doc_header"><code>get_schema</code><a href="https://github.com/andrewm4894/am4894bq/tree/master/am4894bq/schema.py#L11" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_schema</code>(<strong><code>table_id</code></strong>:<code>str</code>)</p>
 </blockquote>
 <p>Get schema given a table_id.</p>
 
@@ -66,8 +66,9 @@ description: "API details."
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># for exampel get a schema for a table</span>
-<span class="n">get_schema</span><span class="p">(</span><span class="s1">&#39;bigquery-public-data.noaa_gsod.gsod1929&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># for example get a schema for a sample table</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">get_schema</span><span class="p">(</span><span class="s1">&#39;bigquery-public-data.samples.shakespeare&#39;</span><span class="p">)</span>
+<span class="n">schema</span>
 </pre></div>
 
     </div>
@@ -82,42 +83,34 @@ description: "API details."
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[SchemaField(&#39;stn&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Station number (WMO/DATSAV3 number) for the location&#39;, ()),
- SchemaField(&#39;wban&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;WBAN number where applicable--this is the historical &#34;Weather Bureau Air Force Navy&#34; number - with WBAN being the acronym&#39;, ()),
- SchemaField(&#39;year&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;The year&#39;, ()),
- SchemaField(&#39;mo&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;The month&#39;, ()),
- SchemaField(&#39;da&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;The day&#39;, ()),
- SchemaField(&#39;temp&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#39;Mean temperature for the day in degrees Fahrenheit to tenths. Missing = 9999.9&#39;, ()),
- SchemaField(&#39;count_temp&#39;, &#39;INTEGER&#39;, &#39;NULLABLE&#39;, &#39;Number of observations used in calculating mean temperature&#39;, ()),
- SchemaField(&#39;dewp&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#39;Mean dew point for the day in degreesm Fahrenheit to tenths.  Missing = 9999.9&#39;, ()),
- SchemaField(&#39;count_dewp&#39;, &#39;INTEGER&#39;, &#39;NULLABLE&#39;, &#39;Number of observations used in calculating mean dew point&#39;, ()),
- SchemaField(&#39;slp&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#39;Mean sea level pressure for the day in millibars to tenths. Missing = 9999.9&#39;, ()),
- SchemaField(&#39;count_slp&#39;, &#39;INTEGER&#39;, &#39;NULLABLE&#39;, &#39;Number of observations used in calculating mean sea level pressure&#39;, ()),
- SchemaField(&#39;stp&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#39;Mean station pressure for the day in millibars to tenths. Missing = 9999.9&#39;, ()),
- SchemaField(&#39;count_stp&#39;, &#39;INTEGER&#39;, &#39;NULLABLE&#39;, &#39;Number of observations used in calculating mean station pressure&#39;, ()),
- SchemaField(&#39;visib&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#39;Mean visibility for the day in miles to tenths.  Missing = 999.9&#39;, ()),
- SchemaField(&#39;count_visib&#39;, &#39;INTEGER&#39;, &#39;NULLABLE&#39;, &#39;Number of observations used in calculating mean visibility&#39;, ()),
- SchemaField(&#39;wdsp&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Mean wind speed for the day in knots to tenths. Missing = 999.9&#39;, ()),
- SchemaField(&#39;count_wdsp&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Number of observations used in calculating mean wind speed&#39;, ()),
- SchemaField(&#39;mxpsd&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Maximum sustained wind speed reported for the day in knots to tenths. Missing = 999.9&#39;, ()),
- SchemaField(&#39;gust&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#39;Maximum wind gust reported for the day in knots to tenths. Missing = 999.9&#39;, ()),
- SchemaField(&#39;max&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#39;Maximum temperature reported during the day in Fahrenheit to tenths--time of max temp report varies by country and region, so this will sometimes not be the max for the calendar day. Missing = 9999.9&#39;, ()),
- SchemaField(&#39;flag_max&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#34;Blank indicates max temp was taken from the explicit max temp report and not from the &#39;hourly&#39; data.\n* indicates max temp was  derived from the hourly data (i.e., highest hourly or synoptic-reported temperature)&#34;, ()),
- SchemaField(&#39;min&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#39;Minimum temperature reported during the day in Fahrenheit to tenths--time of min temp report varies by country and region, so this will sometimes not be the min for the calendar day. Missing = 9999.9&#39;, ()),
- SchemaField(&#39;flag_min&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#34;Blank indicates min temp was taken from the explicit min temp report and not from the &#39;hourly&#39; data.\n* indicates min temp was derived from the hourly data (i.e., lowest hourly or synoptic-reported temperature)&#34;, ()),
- SchemaField(&#39;prcp&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#34;Total precipitation (rain and/or melted snow) reported during the day in inches and hundredths; will usually not end with the midnight observation--i.e., may include latter part of previous day. \n.00 indicates no measurable precipitation (includes a trace).\nMissing = 99.99\nNote: Many stations do not report &#39;0&#39; on days with no precipitation--therefore, &#39;99.99&#39; will often appear on these days. Also, for example, a station may only report a 6-hour amount for the period during which rain fell. See Flag field for source of data&#34;, ()),
- SchemaField(&#39;flag_prcp&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#34;A = 1 report of 6-hour precipitation amount\nB = Summation of 2 reports of 6-hour precipitation amount\nC = Summation of 3 reports of 6-hour precipitation amount\nD = Summation of 4 reports of 6-hour precipitation amount\nE = 1 report of 12-hour precipitation amount\nF = Summation of 2 reports of 12-hour precipitation amount\nG = 1 report of 24-hour precipitation amount\nH = Station reported &#39;0&#39; as the amount for the day (eg, from 6-hour reports), but also reported at least one occurrence of precipitation in hourly observations--this could indicate a trace occurred, but should be considered as incomplete data for the day.\nI = Station did not report any precip data for the day and did not report any occurrences of precipitation in its hourly observations--it&#39;s still possible that precip occurred but was not reported&#34;, ()),
- SchemaField(&#39;sndp&#39;, &#39;FLOAT&#39;, &#39;NULLABLE&#39;, &#34;Snow depth in inches to tenths--last report for the day if reported more thanonce. Missing = 999.9\nNote: Most stations do not report &#39;0&#39; ondays with no snow on the ground--therefore, &#39;999.9&#39; will often appear on these days&#34;, ()),
- SchemaField(&#39;fog&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Indicators (1 = yes, 0 = no/not reported) for the occurrence during the day&#39;, ()),
- SchemaField(&#39;rain_drizzle&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Indicators (1 = yes, 0 = no/not reported) for the occurrence during the day&#39;, ()),
- SchemaField(&#39;snow_ice_pellets&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Indicators (1 = yes, 0 = no/not reported) for the occurrence during the day&#39;, ()),
- SchemaField(&#39;hail&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Indicators (1 = yes, 0 = no/not reported) for the occurrence during the day&#39;, ()),
- SchemaField(&#39;thunder&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Indicators (1 = yes, 0 = no/not reported) for the occurrence during the day&#39;, ()),
- SchemaField(&#39;tornado_funnel_cloud&#39;, &#39;STRING&#39;, &#39;NULLABLE&#39;, &#39;Indicators (1 = yes, 0 = no/not reported) for the occurrence during the day&#39;, ())]</pre>
+<pre>[SchemaField(&#39;word&#39;, &#39;STRING&#39;, &#39;REQUIRED&#39;, &#39;A single unique word (where whitespace is the delimiter) extracted from a corpus.&#39;, ()),
+ SchemaField(&#39;word_count&#39;, &#39;INTEGER&#39;, &#39;REQUIRED&#39;, &#39;The number of times this word appears in this corpus.&#39;, ()),
+ SchemaField(&#39;corpus&#39;, &#39;STRING&#39;, &#39;REQUIRED&#39;, &#39;The work from which this word was extracted.&#39;, ()),
+ SchemaField(&#39;corpus_date&#39;, &#39;INTEGER&#39;, &#39;REQUIRED&#39;, &#39;The year in which this corpus was published.&#39;, ())]</pre>
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add some tests</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">get_schema</span><span class="p">(</span><span class="s1">&#39;bigquery-public-data.samples.shakespeare&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="s1">&#39;word_count&#39;</span><span class="p">,</span> <span class="s1">&#39;corpus&#39;</span><span class="p">,</span> <span class="s1">&#39;corpus_date&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 

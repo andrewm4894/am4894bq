@@ -8,7 +8,7 @@ load_dotenv()
 from google.cloud import bigquery
 
 
-def get_schema(table_id):
+def get_schema(table_id: str) -> list:
     """Get schema given a table_id.
     """
     client = bigquery.Client()
