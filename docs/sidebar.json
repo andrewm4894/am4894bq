@@ -1,6 +1,7 @@
 {
   "am4894bq": {
     "Overview": "/",
-    "core": "/core"
+    "core": "/core",
+    "schema": "/schema"
   }
 }

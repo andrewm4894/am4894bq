@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: core
       url: /core
+    - output: web,pdf
+      title: schema
+      url: /schema
     output: web
     title: am4894bq
   output: web
