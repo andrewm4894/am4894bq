@@ -2,6 +2,7 @@
   "am4894bq": {
     "Overview": "/",
     "core": "/core",
-    "schema": "/schema"
+    "schema": "/schema",
+    "Title": "/scratchpad"
   }
 }

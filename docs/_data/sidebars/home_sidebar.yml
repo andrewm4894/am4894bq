@@ -15,6 +15,9 @@ entries:
     - output: web,pdf
       title: schema
       url: /schema
+    - output: web,pdf
+      title: Title
+      url: /scratchpad
     output: web
     title: am4894bq
   output: web
