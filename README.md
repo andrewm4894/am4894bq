@@ -2,6 +2,8 @@
 > A helper library for some BigQuery related stuff.
 
 
+[![pypi package](https://img.shields.io/pypi/v/am4894bq.svg)](https://pypi.python.org/pypi/am4894bq/)
+
 ## Install
 
 `pip install am4894bq`
