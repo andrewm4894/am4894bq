@@ -4,7 +4,10 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"get_schema": "01_schema.ipynb",
          "dtype_to_bqtype": "01_schema.ipynb",
-         "df_to_bq_schema": "01_schema.ipynb"}
+         "df_to_bq_schema": "01_schema.ipynb",
+         "schema_diff": "01_schema.ipynb",
+         "update_bq_schema": "01_schema.ipynb",
+         "update_df_schema": "01_schema.ipynb"}
 
 modules = ["schema.py"]
 
