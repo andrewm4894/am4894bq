@@ -76,7 +76,7 @@ def schema_diff(old_schema, new_schema) -> list:
 # Cell
 
 
-def update_bq_schema(bq_client, table_id, diffs):
+def update_bq_schema(bq_client, table_id: str, diffs: list) -> bool:
     """
     Given a list of diffs and a table_id add any new columns to table.
     """
@@ -100,7 +100,7 @@ def update_bq_schema(bq_client, table_id, diffs):
 # Cell
 
 
-def update_df_schema(bq_client, table_id, diffs, df) -> pd.DataFrame:
+def update_df_schema(bq_client, table_id: str, diffs: list, df: pd.DataFrame) -> pd.DataFrame:
     """
     Given a list of diffs add any columns expected but not found in df.
     """

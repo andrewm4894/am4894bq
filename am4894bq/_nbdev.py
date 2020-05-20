@@ -7,9 +7,13 @@ index = {"get_schema": "01_schema.ipynb",
          "df_to_bq_schema": "01_schema.ipynb",
          "schema_diff": "01_schema.ipynb",
          "update_bq_schema": "01_schema.ipynb",
-         "update_df_schema": "01_schema.ipynb"}
+         "update_df_schema": "01_schema.ipynb",
+         "does_table_exist": "02_utils.ipynb",
+         "df_to_gbq": "03_pd.ipynb"}
 
-modules = ["schema.py"]
+modules = ["schema.py",
+           "utils.py",
+           "pd.py"]
 
 doc_url = "https://andrewm4894.github.io/am4894bq/"
 

@@ -12,6 +12,12 @@ entries:
     - output: web,pdf
       title: schema
       url: /schema
+    - output: web,pdf
+      title: utils
+      url: /utils
+    - output: web,pdf
+      title: pd
+      url: /pd
     output: web
     title: am4894bq
   output: web
