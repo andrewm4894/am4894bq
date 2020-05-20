@@ -448,6 +448,7 @@ description: "Functionality related to dealing with schemas in BigQuery."
         <span class="k">if</span> <span class="n">diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;drop&#39;</span><span class="p">:</span>
             <span class="n">col_name</span> <span class="o">=</span> <span class="n">diff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
             <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;adding </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s1"> to df&#39;</span><span class="p">)</span>
                 <span class="n">df</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">table</span> <span class="o">=</span> <span class="n">bq_client</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">table_id</span><span class="p">)</span>
     <span class="n">bq_schema</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">schema</span>

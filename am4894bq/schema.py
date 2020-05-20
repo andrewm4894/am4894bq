@@ -108,6 +108,7 @@ def update_df_schema(bq_client, table_id, diffs, df) -> pd.DataFrame:
         if diff[0] == 'drop':
             col_name = diff[1].name
             if col_name not in df.columns:
+                print(f'adding {col_name} to df')
                 df[col_name] = None
     table = bq_client.get_table(table_id)
     bq_schema = table.schema
