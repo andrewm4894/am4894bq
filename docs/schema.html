@@ -228,25 +228,6 @@ description: "Functionality related to dealing with schemas in BigQuery."
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tests </span>
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
-<span class="k">assert</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -270,28 +251,6 @@ description: "Functionality related to dealing with schemas in BigQuery."
 
 </div>
 
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tests</span>
-<span class="n">old_schema</span> <span class="o">=</span> <span class="p">[</span><span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">),</span><span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;col2&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">)]</span>
-<span class="n">new_schema</span> <span class="o">=</span> <span class="p">[</span><span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;col2&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">),</span><span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;col3&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">)]</span>
-<span class="n">expected_diff</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;col3&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">)),(</span><span class="s1">&#39;drop&#39;</span><span class="p">,</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">SchemaField</span><span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">))]</span>
-<span class="n">actual_diff</span> <span class="o">=</span> <span class="n">schema_diff</span><span class="p">(</span><span class="n">old_schema</span><span class="p">,</span> <span class="n">new_schema</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">actual_diff</span> <span class="o">==</span> <span class="n">expected_diff</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
