@@ -11,6 +11,8 @@ from google.cloud import bigquery
 from .schema import get_schema, df_to_bq_schema, schema_diff, update_bq_schema, update_df_schema
 from .utils import does_table_exist
 
+load_dotenv()
+
 bq_project_id = os.getenv('BQ_PROJECT_ID')
 
 # Cell
