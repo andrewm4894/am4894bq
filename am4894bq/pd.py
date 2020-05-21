@@ -18,28 +18,31 @@ bq_project_id = os.getenv('BQ_PROJECT_ID')
 # Cell
 
 
-def df_to_gbq(df: pd.DataFrame, destination_table: str, project_id: str, if_exists: str = 'append', print_info: bool = True) -> pd.DataFrame:
+def df_to_gbq(df: pd.DataFrame, destination_table: str, project_id: str, if_exists: str = 'append', print_info: bool = True, mode: str = 'pandas') -> pd.DataFrame:
     """
     Save df to BigQuery enforcing schema consistency between df and destination table if it exists.
     """
 
-    table_id = f'{project_id}.{destination_table}'
-    bq_client = bigquery.Client()
+    # only do anything if mode set to wrangle, otherwise just use pandas
+    if mode == 'wrangle':
 
-    # only need to handle schema's if table already exists and if_exists != 'replace'
-    if does_table_exist(bq_client, table_id) and if_exists != 'replace' :
+        table_id = f'{project_id}.{destination_table}'
+        bq_client = bigquery.Client()
 
-        old_schema = get_schema(table_id)
-        new_schema = df_to_bq_schema(df)
-        diffs = schema_diff(old_schema, new_schema)
+        # only need to handle schema's if table already exists and if_exists != 'replace'
+        if does_table_exist(bq_client, table_id) and if_exists != 'replace' :
 
-        if len(diffs) > 0:
+            old_schema = get_schema(table_id)
+            new_schema = df_to_bq_schema(df)
+            diffs = schema_diff(old_schema, new_schema)
 
-            # update the table schema in BigQuery
-            update_bq_schema(bq_client, table_id, diffs, print_info=print_info)
+            if len(diffs) > 0:
 
-            # update the df schema to be as expected by BigQuery
-            df = update_df_schema(bq_client, table_id, diffs, df, print_info=print_info)
+                # update the table schema in BigQuery
+                update_bq_schema(bq_client, table_id, diffs, print_info=print_info)
+
+                # update the df schema to be as expected by BigQuery
+                df = update_df_schema(bq_client, table_id, diffs, df, print_info=print_info)
 
     # load to BigQuery
     df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
