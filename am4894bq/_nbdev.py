@@ -9,6 +9,7 @@ index = {"get_schema": "01_schema.ipynb",
          "update_bq_schema": "01_schema.ipynb",
          "update_df_schema": "01_schema.ipynb",
          "does_table_exist": "02_utils.ipynb",
+         "bq_project_id": "03_pd.ipynb",
          "df_to_gbq": "03_pd.ipynb"}
 
 modules = ["schema.py",

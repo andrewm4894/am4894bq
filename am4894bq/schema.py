@@ -76,7 +76,7 @@ def schema_diff(old_schema, new_schema) -> list:
 # Cell
 
 
-def update_bq_schema(bq_client, table_id: str, diffs: list) -> bool:
+def update_bq_schema(bq_client, table_id: str, diffs: list, print_info: bool = True) -> bool:
     """
     Given a list of diffs and a table_id add any new columns to table.
     """
@@ -88,7 +88,8 @@ def update_bq_schema(bq_client, table_id: str, diffs: list) -> bool:
             bq_schema_field = diff[1]
             col_name = bq_schema_field.name
             if col_name not in current_schema_col_names:
-                print(f'adding {bq_schema_field} to {table_id}')
+                if print_info:
+                    print(f'adding {bq_schema_field} to {table_id}')
                 new_schema = current_schema[:]
                 new_schema.append(bq_schema_field)
                 table.schema = new_schema
@@ -100,7 +101,7 @@ def update_bq_schema(bq_client, table_id: str, diffs: list) -> bool:
 # Cell
 
 
-def update_df_schema(bq_client, table_id: str, diffs: list, df: pd.DataFrame) -> pd.DataFrame:
+def update_df_schema(bq_client, table_id: str, diffs: list, df: pd.DataFrame, print_info: bool = True) -> pd.DataFrame:
     """
     Given a list of diffs add any columns expected but not found in df.
     """
@@ -108,7 +109,8 @@ def update_df_schema(bq_client, table_id: str, diffs: list, df: pd.DataFrame) ->
         if diff[0] == 'drop':
             col_name = diff[1].name
             if col_name not in df.columns:
-                print(f'adding {col_name} to df')
+                if print_info:
+                    print(f'adding {col_name} to df')
                 df[col_name] = None
     table = bq_client.get_table(table_id)
     bq_schema = table.schema
