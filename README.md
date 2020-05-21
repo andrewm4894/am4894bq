@@ -27,3 +27,7 @@ schema
      SchemaField('corpus_date', 'INTEGER', 'REQUIRED', 'The year in which this corpus was published.', ())]
 
 
+
+## Examples
+
+You can see some example notebooks in the [examples folder](https://github.com/andrewm4894/am4894bq/tree/master/examples) of the repository.
