@@ -8,6 +8,7 @@ import pandas as pd
 from dotenv import load_dotenv
 load_dotenv()
 from google.cloud import bigquery
+from google.cloud.exceptions import NotFound
 
 # Cell
 
