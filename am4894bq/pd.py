@@ -33,11 +33,13 @@ def df_to_gbq(df: pd.DataFrame, destination_table: str, project_id: str, if_exis
         new_schema = df_to_bq_schema(df)
         diffs = schema_diff(old_schema, new_schema)
 
-        # update the table schema in BigQuery
-        update_bq_schema(bq_client, table_id, diffs, print_info=print_info)
+        if len(diffs) > 0:
 
-        # update the df schema to be as expected by BigQuery
-        df = update_df_schema(bq_client, table_id, diffs, df, print_info=print_info)
+            # update the table schema in BigQuery
+            update_bq_schema(bq_client, table_id, diffs, print_info=print_info)
+
+            # update the df schema to be as expected by BigQuery
+            df = update_df_schema(bq_client, table_id, diffs, df, print_info=print_info)
 
     # load to BigQuery
     df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
