@@ -55,8 +55,11 @@ def df_to_gbq(df: pd.DataFrame, destination_table: str, project_id: str, if_exis
                 # update the df schema to be as expected by BigQuery
                 df = update_df_schema(bq_client, table_id, diffs, df, print_info=print_info)
 
-    # load to BigQuery
-    df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
+    # load to BigQuery with a retry
+    try:
+        df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
+    except:
+        df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
 
     return df
 
