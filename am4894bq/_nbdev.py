@@ -11,8 +11,8 @@ index = {"get_schema": "01_schema.ipynb",
          "does_table_exist": "02_utils.ipynb",
          "bq_project_id": "03_pd.ipynb",
          "clean_colnames": "03_pd.ipynb",
-         "df_to_gbq": "03_pd.ipynb",
-         "cols_to_str": "03_pd.ipynb"}
+         "cols_to_str": "03_pd.ipynb",
+         "df_to_gbq": "03_pd.ipynb"}
 
 modules = ["schema.py",
            "utils.py",
