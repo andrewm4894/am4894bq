@@ -1,6 +1,6 @@
 jupyter==1.0.0
 jupyterlab==2.1.2
-nbdev==0.2.18
+nbdev==0.2.20
 twine
 google-cloud-bigquery==1.24.0
 python-dotenv==0.13.0
