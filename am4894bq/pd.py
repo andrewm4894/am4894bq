@@ -3,7 +3,7 @@
 __all__ = ['bq_project_id', 'clean_colnames', 'cols_to_str', 'df_to_gbq']
 
 # Cell
-#export
+# export
 import os
 import pandas as pd
 from dotenv import load_dotenv
@@ -17,14 +17,19 @@ bq_project_id = os.getenv('BQ_PROJECT_ID')
 
 # Cell
 
-def clean_colnames(df: pd.DataFrame) -> pd.DataFrame:
+
+def clean_colnames(df: pd.DataFrame, char_default: str = '_') -> pd.DataFrame:
     cols_to_rename = {}
+    bad_chars = '#:!'
     for col in df.columns:
         if type(col) != str:
-            cols_to_rename[col] = f"_{col}"
+            cols_to_rename[col] = f"{char_default}{col}"
     if len(cols_to_rename) > 0:
         df = df.rename(columns=cols_to_rename)
+    df.columns = df.columns.str.replace(f'[{bad_chars}]', char_default)
     return df
+
+
 
 # Cell
 
@@ -45,10 +50,14 @@ def cols_to_str(df: pd.DataFrame) -> pd.DataFrame:
 
 def df_to_gbq(
     df: pd.DataFrame, destination_table: str, project_id: str, if_exists: str = 'append',
-    print_info: bool = True, mode: str = 'pandas', cols_as_str: bool = False) -> pd.DataFrame:
+    print_info: bool = True, mode: str = 'pandas', cols_as_str: bool = False, clean_col_names: bool = True) -> pd.DataFrame:
     """
     Save df to BigQuery enforcing schema consistency between df and destination table if it exists.
     """
+
+    # remove bad chars that are not allowed in field names in bq
+    if clean_col_names:
+        df = clean_colnames(df)
 
     # only do anything if mode set to wrangle, otherwise just use pandas
     if mode == 'wrangle':
