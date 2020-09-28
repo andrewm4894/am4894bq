@@ -14,7 +14,7 @@ jupyter = "==1.0.0"
 jupyterlab = "==2.1.2"
 nbdev = "==0.2.18"
 twine = "*"
-nbconvert = "==5.6.1"
+nbconvert = "==6.0.6"
 
 [requires]
 python_version = "3.8"
