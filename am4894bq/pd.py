@@ -18,7 +18,7 @@ bq_project_id = os.getenv('BQ_PROJECT_ID')
 # Cell
 
 
-def clean_colnames(df: pd.DataFrame, char_default: str = '_', bad_chars: str = '#:!.') -> pd.DataFrame:
+def clean_colnames(df: pd.DataFrame, char_default: str = '_', bad_chars: str = '#:!. ') -> pd.DataFrame:
     cols_to_rename = {}
     for col in df.columns:
         if type(col) != str:
