@@ -96,6 +96,9 @@ def update_bq_schema(bq_client, table_id: str, diffs: list, print_info: bool = T
                     new_schema.append(bq_schema_field)
                     table.schema = new_schema
                     table = bq_client.update_table(table, ["schema"])
+                    table = bq_client.get_table(table_id)
+                    current_schema = table.schema
+                    current_schema_col_names = [col.name for col in current_schema]
     return True
 
 
