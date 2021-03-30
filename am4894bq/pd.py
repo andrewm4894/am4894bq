@@ -84,8 +84,11 @@ def df_to_gbq(
 
     # load to BigQuery with a retry
     try:
+        #print(f'... loading to {project_id}:{destination_table} (if_exists={if_exists})')
         df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
-    except:
+    except Exception as e:
+        print(e)
+        print(f'... retry loading to {project_id}:{destination_table} (if_exists={if_exists})')
         df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
 
     return df
