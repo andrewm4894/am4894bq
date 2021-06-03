@@ -1,0 +1,51 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: jupyterlab
+    versions:
+    - 3.0.10
+    - 3.0.11
+    - 3.0.12
+    - 3.0.13
+    - 3.0.6
+    - 3.0.7
+    - 3.0.8
+    - 3.0.9
+  - dependency-name: python-dotenv
+    versions:
+    - 0.15.0
+    - 0.16.0
+  - dependency-name: google-cloud-bigquery
+    versions:
+    - 2.10.0
+    - 2.11.0
+    - 2.12.0
+    - 2.13.0
+    - 2.13.1
+    - 2.7.0
+    - 2.8.0
+    - 2.9.0
+  - dependency-name: twine
+    versions:
+    - 3.3.0
+    - 3.4.0
+  - dependency-name: pandas
+    versions:
+    - 1.2.1
+    - 1.2.2
+    - 1.2.3
+  - dependency-name: nbdev
+    versions:
+    - 1.1.12
+    - 1.1.13
+  - dependency-name: pandas-gbq
+    versions:
+    - 0.14.1
+  - dependency-name: cryptography
+    versions:
+    - "3.2"
