@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 pandas = "==1.0.3"
 pandas-gbq = "==0.13.2"
-google-cloud-bigquery = "==1.24.0"
+google-cloud-bigquery = "==2.23.2"
 python-dotenv = "==0.13.0"
 
 [dev-packages]
