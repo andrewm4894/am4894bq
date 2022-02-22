@@ -1,8 +1,8 @@
 {
   "am4894bq": {
     "Overview": "/",
-    "schema": "/schema",
-    "utils": "/utils",
-    "pd": "/pd"
+    "schema": "schema.html",
+    "utils": "utils.html",
+    "pd": "pd.html"
   }
 }

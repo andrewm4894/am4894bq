@@ -49,7 +49,8 @@ def cols_to_str(df: pd.DataFrame) -> pd.DataFrame:
 
 def df_to_gbq(
     df: pd.DataFrame, destination_table: str, project_id: str, if_exists: str = 'append',
-    print_info: bool = True, mode: str = 'pandas', cols_as_str: bool = False, clean_col_names: bool = True) -> pd.DataFrame:
+    print_info: bool = True, mode: str = 'pandas', cols_as_str: bool = False, clean_col_names: bool = True,
+    progress_bar: bool = True) -> pd.DataFrame:
     """
     Save df to BigQuery enforcing schema consistency between df and destination table if it exists.
     """
@@ -85,11 +86,11 @@ def df_to_gbq(
     # load to BigQuery with a retry
     try:
         #print(f'... loading to {project_id}:{destination_table} (if_exists={if_exists})')
-        df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
+        df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists, progress_bar=progress_bar)
     except Exception as e:
         print(e)
         print(f'... retry loading to {project_id}:{destination_table} (if_exists={if_exists})')
-        df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists)
+        df.to_gbq(destination_table, project_id=project_id, if_exists=if_exists, progress_bar=progress_bar)
 
     return df
 

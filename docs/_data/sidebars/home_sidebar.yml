@@ -11,13 +11,13 @@ entries:
       url: /
     - output: web,pdf
       title: schema
-      url: /schema
+      url: schema.html
     - output: web,pdf
       title: utils
-      url: /utils
+      url: utils.html
     - output: web,pdf
       title: pd
-      url: /pd
+      url: pd.html
     output: web
     title: am4894bq
   output: web
